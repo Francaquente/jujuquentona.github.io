@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>💌 Para Juliana 💌</title>
   <style>
     * {
@@ -137,7 +137,8 @@
     <div class="heart"></div>
   </div>
 
-  <button id="abrir">Abrir mensagem</button>
+  <button id="abrir">Abrir mensagem 💖</button>
+  <button id="tocar">🔊 Tocar música</button>
 
   <div class="message" id="mensagem">
     <p>
@@ -149,7 +150,7 @@ Acima de tudo continue sendo essa mulher guerreira, especial e maravilhosa com p
 
 Lamento por tudo o que houve conosco, por todas as vezes que brigamos, e todas as vezes que te decepcionei, com minhas palavras e atitudes. Você é incrível, e merece o mundo, onde eu tento e peço todos os dias a melhora para que eu consiga.
 
-Obrigado por sempre me ajudar, por sempre me apoiar, aconselhar, ser minha segunda mãe KKKKK, obrigado por estar comigo nos meus melhores e piores momentos, nossa dívida será eterna, te agradeço muito pela mulher que você é para mim.
+Obrigado por sempre me ajudar, por sempre me apoiar, aconselhar ser minha segunda mãe KKKKk, obrigado por estar comigo nos meus melhores e piores momentos, nossa dívida será eterna, te agradeço muito pela mulher que você é para mim.
 
 Você sempre será a minha dona encrenca, sempre terá um lugar no meu coração onde ninguém nunca vai ocupar, a não ser você! Espero conquistar tudo novamente com você, onde possamos olhar para trás e dar risada juntos, que se for da vontade dos nossos guias que nossos caminhos estejam cruzados (ainda vou tentar falar pro caveira ser menos bravo) KKKKK brincadeira.
 
@@ -159,19 +160,16 @@ Amo você, Juliana França Lima! 💗
     </p>
   </div>
 
-  <iframe 
-    id="musica"
-    width="0"
-    height="0"
-    src="https://www.youtube.com/embed/xua1aWzCRZM?autoplay=1&loop=1&playlist=xua1aWzCRZM"
-    frameborder="0"
-    allow="autoplay">
-  </iframe>
+  <audio id="musica" loop>
+    <source src="https://files.catbox.moe/ahk4j9.mp3" type="audio/mpeg">
+  </audio>
 
   <script>
     const envelope = document.getElementById("envelope");
     const abrir = document.getElementById("abrir");
     const mensagem = document.getElementById("mensagem");
+    const tocar = document.getElementById("tocar");
+    const musica = document.getElementById("musica");
 
     abrir.addEventListener("click", () => {
       envelope.classList.add("open");
@@ -179,6 +177,13 @@ Amo você, Juliana França Lima! 💗
         mensagem.style.display = "block";
         window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
       }, 800);
+    });
+
+    tocar.addEventListener("click", () => {
+      musica.play();
+      tocar.textContent = "🎵 Música tocando...";
+      tocar.disabled = true;
+      tocar.style.background = "#c4475e";
     });
   </script>
 </body>
