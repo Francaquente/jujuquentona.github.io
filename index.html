@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
@@ -13,34 +13,37 @@
     }
 
     body {
-      height: 100vh;
-      background: linear-gradient(to bottom right, #ffd6e8, #ffebf2);
+      min-height: 100vh;
+      background: linear-gradient(to bottom right, #ffd6e8, #ffe6ef);
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
       font-family: "Poppins", sans-serif;
       overflow-x: hidden;
     }
 
     h1 {
-      color: #d63384;
       font-size: 2em;
+      color: #d63384;
+      margin-bottom: 25px;
       text-align: center;
-      margin-bottom: 20px;
     }
 
+    /* ENVELOPE BRANCO */
     .envelope {
-      width: 180px;
-      height: 120px;
-      background: white;
+      width: 200px;
+      height: 130px;
+      background: #ffffff;
       border-radius: 10px;
       position: relative;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+      transition: transform 0.6s ease-in-out;
       display: flex;
       justify-content: center;
       align-items: center;
-      margin-bottom: 30px;
+      cursor: pointer;
+      margin-bottom: 25px;
     }
 
     .envelope::before {
@@ -50,23 +53,30 @@
       left: 0;
       width: 0;
       height: 0;
-      border-left: 90px solid transparent;
-      border-right: 90px solid transparent;
-      border-bottom: 60px solid #ffffff;
+      border-left: 100px solid transparent;
+      border-right: 100px solid transparent;
+      border-bottom: 65px solid #ffffff;
       border-radius: 10px 10px 0 0;
+      transition: transform 0.6s ease-in-out;
+      transform-origin: top;
+    }
+
+    .envelope.open::before {
+      transform: rotateX(180deg);
     }
 
     .envelope span {
       font-size: 2.5em;
     }
 
+    /* BOTÕES */
     button {
       background: #ff4b8b;
       border: none;
       color: white;
       font-size: 1.1em;
       padding: 12px 25px;
-      margin: 10px;
+      margin: 8px;
       border-radius: 50px;
       cursor: pointer;
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
@@ -78,6 +88,7 @@
       transform: scale(1.05);
     }
 
+    /* MENSAGEM */
     .mensagem {
       display: none;
       background: white;
@@ -91,9 +102,9 @@
       line-height: 1.6;
       text-align: justify;
       box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-      position: relative;
     }
 
+    /* CORAÇÕES FLUTUANTES */
     .heart {
       position: fixed;
       bottom: -10px;
@@ -115,7 +126,6 @@
   </style>
 </head>
 <body>
-
   <h1>💌 Para Juliana 💌</h1>
 
   <div class="envelope" id="envelope">
@@ -144,30 +154,36 @@
   </div>
 
   <audio id="audio">
-    <source src="the-last-day.mp3" type="audio/mpeg">
+    <source src="ytmp3free.cc_moby-the-last-day-with-skylar-grey-youtubemp3free.org.mp3" type="audio/mpeg">
   </audio>
 
   <script>
-    const btnMsg = document.getElementById('abrir');
-    const btnMusic = document.getElementById('musica');
+    const envelope = document.getElementById('envelope');
+    const btnAbrir = document.getElementById('abrir');
+    const btnMusica = document.getElementById('musica');
     const mensagem = document.getElementById('mensagem');
     const audio = document.getElementById('audio');
 
-    btnMsg.addEventListener('click', () => {
-      mensagem.style.display = 'block';
-      window.scrollTo({ top: mensagem.offsetTop, behavior: 'smooth' });
-      gerarCoracoes();
+    // Abrir envelope + mostrar mensagem
+    btnAbrir.addEventListener('click', () => {
+      envelope.classList.add('open');
+      setTimeout(() => {
+        mensagem.style.display = 'block';
+        window.scrollTo({ top: mensagem.offsetTop, behavior: 'smooth' });
+        gerarCoracoes();
+      }, 600);
     });
 
-    btnMusic.addEventListener('click', () => {
+    // Tocar música
+    btnMusica.addEventListener('click', () => {
       audio.play().then(() => {
-        btnMusic.innerText = '🎶 Música tocando...';
+        btnMusica.innerText = '🎶 Música tocando...';
       }).catch(() => {
         alert('Toque na tela para permitir o som 💕');
       });
     });
 
-    // Função dos corações flutuantes 💖
+    // Corações flutuantes
     function gerarCoracoes() {
       setInterval(() => {
         const heart = document.createElement('div');
@@ -182,3 +198,14 @@
   </script>
 </body>
 </html>
+
+   
+     
+      
+     
+
+ 
+
+ 
+ 
+   
