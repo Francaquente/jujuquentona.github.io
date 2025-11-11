@@ -8,82 +8,80 @@
     body {
       margin: 0;
       height: 100vh;
-      background: linear-gradient(135deg, #f7c6d9, #c8a2c8);
+      background: linear-gradient(135deg, #ffb6c1, #ffe6e6);
+      font-family: "Poppins", sans-serif;
+      color: #333;
+      overflow-y: scroll;
+      scroll-behavior: smooth;
       display: flex;
       justify-content: center;
       align-items: center;
-      flex-direction: column;
-      color: #fff;
-      font-family: "Georgia", serif;
-      text-align: center;
-      overflow-y: auto;
-      scroll-behavior: smooth;
-      padding: 40px;
     }
 
-    .mensagem {
-      max-width: 700px;
-      font-size: 1.4em;
-      line-height: 1.6;
-      white-space: pre-wrap;
-      border: 2px solid rgba(255,255,255,0.5);
-      padding: 25px;
+    .container {
+      max-width: 800px;
+      background: rgba(255, 255, 255, 0.8);
       border-radius: 20px;
-      background-color: rgba(255,255,255,0.1);
-      backdrop-filter: blur(5px);
-      box-shadow: 0 0 15px rgba(255,255,255,0.2);
+      padding: 40px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      backdrop-filter: blur(10px);
+    }
+
+    h1 {
+      font-size: 2.5em;
+      color: #e91e63;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 1.2em;
+      line-height: 1.6;
+      text-align: justify;
+      margin-bottom: 20px;
+      color: #444;
+    }
+
+    footer {
+      margin-top: 40px;
+      font-style: italic;
+      color: #777;
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
+      from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    .digitando span {
-      opacity: 0;
-      display: inline-block;
-      animation: fadeIn 0.04s forwards;
+    .container {
+      animation: fadeIn 2s ease;
     }
   </style>
 </head>
 <body>
-  <audio autoplay loop>
-    <source src="https://www.youtube.com/embed/xua1aWzCRZM?autoplay=1&loop=1" type="audio/mp3">
-  </audio>
+  <!-- 🎵 Música tocando automaticamente -->
+  <iframe width="0" height="0" src="https://www.youtube.com/embed/xua1aWzCRZM?autoplay=1&loop=1&playlist=xua1aWzCRZM" frameborder="0" allow="autoplay"></iframe>
 
-  <div class="mensagem digitando" id="mensagem"></div>
-
-  <script>
-    const texto = `
-Juliana 💌
-
-Desde o primeiro momento em que te vi, algo dentro de mim mudou. 
-Cada sorriso teu, cada palavra, cada instante ao teu lado foi construindo algo que eu nunca imaginei sentir — algo verdadeiro, puro e forte.
-
-Você é luz nos meus dias nublados, é calma quando o mundo parece barulhento demais. 
-E mesmo nas pequenas coisas, você tem o dom de deixar tudo mais bonito.
-
-Essa carta é só um pedacinho do que eu sinto, mas saiba: 
-você é especial de um jeito que palavras nunca vão conseguir explicar. 
-Talvez por isso eu tenha escolhido te escrever assim — pra deixar registrado que meu coração sorri quando pensa em você.
-
-Com carinho,
-💗 De alguém que pensa em você todos os dias.
-    `;
-
-    const mensagem = document.getElementById("mensagem");
-
-    function digitarTexto(texto, elemento, intervalo) {
-      elemento.innerHTML = "";
-      texto.split("").forEach((letra, i) => {
-        const span = document.createElement("span");
-        span.textContent = letra;
-        span.style.animationDelay = `${i * intervalo}s`;
-        elemento.appendChild(span);
-      });
-    }
-
-    digitarTexto(texto, mensagem, 0.05);
-  </script>
+  <div class="container">
+    <h1>💌 Para Juliana 💌</h1>
+    <p>
+      Desde o primeiro momento em que te vi, algo dentro de mim mudou.  
+      Cada sorriso teu, cada palavra, cada instante contigo... tudo se tornou mais leve, mais bonito.  
+      Você é luz nos meus dias nublados, é calma quando o mundo parece agitado.  
+      E mesmo nas pequenas coisas, você tem o dom de transformar tudo em algo especial.
+    </p>
+    <p>
+      Essa carta é só um pedacinho do que eu sinto por você.  
+      Você é especial de um jeito que palavras nunca vão conseguir explicar.  
+      Talvez por isso eu tenha escolhido te escrever — porque às vezes, o que o coração sente,  
+      só o tempo e o silêncio conseguem traduzir.
+    </p>
+    <p>
+      Obrigado por ser quem você é.  
+      Por existir, por iluminar, e por fazer parte da minha vida.  
+      Você merece o mundo inteiro — e eu só espero poder te dar um pedacinho dele.
+    </p>
+    <footer>Com carinho, 💖</footer>
+  </div>
 </body>
 </html>
