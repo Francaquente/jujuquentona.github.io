@@ -5,34 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Para Juliana 💌</title>
   <style>
-    html {
-      scroll-behavior: smooth;
-    }
-
     body {
       font-family: "Poppins", sans-serif;
-      background: linear-gradient(to bottom right, #ffd6e8, #fff);
+      background: linear-gradient(to bottom, #ffd6e8, #fff);
       text-align: center;
       margin: 0;
       padding: 0;
-    }
-
-    h1 {
-      color: #e24b76;
-      margin-top: 40px;
+      scroll-behavior: smooth;
     }
 
     .envelope {
       margin-top: 60px;
       font-size: 100px;
       color: #e24b76;
-      animation: pulse 1.5s infinite;
-    }
-
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.1); }
-      100% { transform: scale(1); }
     }
 
     button {
@@ -64,19 +49,11 @@
       text-align: left;
       line-height: 1.6;
     }
-
-    .tocando {
-      background-color: #a03c60 !important;
-      cursor: default;
-    }
   </style>
 </head>
 <body>
-
-  <h1>💌 Para Juliana 💌</h1>
-
-  <div id="envelope" class="envelope">💖</div>
-  <button id="abrir">Abrir mensagem 💌</button>
+  <div id="envelope" class="envelope">💌</div>
+  <button id="abrir">Abrir mensagem 💖</button>
   <button id="tocar">🎵 Tocar música</button>
 
   <div id="mensagem" class="mensagem">
@@ -84,4 +61,45 @@
 
     <p>Passando pra te desejar um feliz aniversário, tudo de bom em sua vida, muita paz, prosperidade, saúde e muitos caminhos abertos.</p>
 
-    <p>Acima de tudo continue sendo
+    <p>Acima de tudo continue sendo essa mulher guerreira, especial e maravilhosa com princípios cujo só você tem. Cujo eu conheci a mulher mais incrível que já passou em toda minha vida.</p>
+
+    <p>Lamento por tudo o que houve conosco, por todas as vezes que brigamos, e todas as vezes que te decepcionei, com minhas palavras e atitudes. Você é incrível, e merece o mundo, onde eu tento e peço todos os dias a melhora para que eu consiga.</p>
+
+    <p>Obrigado por sempre me ajudar, por sempre me apoiar, aconselhar ser minha segunda mãe KKKKk, obrigado por estar comigo nos meus melhores e piores momentos, nossa dívida será eterna, te agradeço muito pela mulher que você é para mim.</p>
+
+    <p>Você sempre será a minha dona encrenca, sempre terá um lugar no meu coração onde ninguém nunca vai ocupar, a não ser você! Espero conquistar tudo novamente com você, onde possamos olhar para trás e dar risada juntos, que se for da vontade dos nossos guias que nossos caminhos estejam cruzados (ainda vou tentar falar pro Caveira ser menos bravo) KKKKK brincadeira.</p>
+
+    <p>Que essa sua fase seja abençoada, uma nova fase de responsabilidade e direitos, que você seja MUITO abençoada. Estarei sempre com você, aqui, além daqui e pra sempre.</p>
+
+    <p><strong>Amo você, Juliana França Lima! 💘</strong></p>
+  </div>
+
+  <audio id="musica" loop>
+    <source src="Moby - The Last Day (with Skylar Grey) [xua1a-WzCRZM].mp3" type="audio/mpeg">
+    Seu navegador não suporta áudio.
+  </audio>
+
+  <script>
+    const envelope = document.getElementById('envelope');
+    const mensagem = document.getElementById('mensagem');
+    const botaoAbrir = document.getElementById('abrir');
+    const botaoTocar = document.getElementById('tocar');
+    const musica = document.getElementById('musica');
+
+    // Quando clicar em "Abrir mensagem"
+    botaoAbrir.addEventListener('click', () => {
+      mensagem.style.display = 'block';
+      envelope.style.display = 'none';
+      botaoAbrir.style.display = 'none';
+      window.scrollTo({ top: mensagem.offsetTop, behavior: 'smooth' });
+    });
+
+    // Quando clicar em "Tocar música"
+    botaoTocar.addEventListener('click', () => {
+      musica.play().catch(() => {
+        alert('Toque na tela para permitir o som 💖');
+      });
+    });
+  </script>
+</body>
+</html>
