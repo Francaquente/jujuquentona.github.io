@@ -8,210 +8,82 @@
     body {
       margin: 0;
       height: 100vh;
-      background: linear-gradient(180deg, #fef6f6, #fde9e9);
+      background: linear-gradient(135deg, #f7c6d9, #c8a2c8);
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
-      font-family: "Poppins", sans-serif;
-      overflow: hidden;
-    }
-
-    h1 {
-      color: #b67a83;
-      font-weight: 500;
-      font-size: 2rem;
-      margin-bottom: 40px;
+      flex-direction: column;
+      color: #fff;
+      font-family: "Georgia", serif;
       text-align: center;
-      animation: fadeIn 1.5s ease forwards;
+      overflow-y: auto;
+      scroll-behavior: smooth;
+      padding: 40px;
     }
 
-    .envelope {
-      position: relative;
-      width: 220px;
-      height: 130px;
-      background: #fff;
-      border: 2px solid #e0d8d6;
-      border-radius: 10px;
-      overflow: hidden;
-      cursor: pointer;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      transition: all 0.6s ease;
-    }
-
-    .envelope:before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: #f2b6bd;
-      clip-path: polygon(0 0, 100% 0, 50% 50%);
-      transition: transform 0.6s ease;
-      transform-origin: top;
-    }
-
-    .envelope.open:before {
-      transform: rotateX(180deg);
-    }
-
-    .heart {
-      position: absolute;
-      top: 35%;
-      left: 50%;
-      transform: translate(-50%, -50%) rotate(-45deg);
-      width: 60px;
-      height: 60px;
-      background: #f28c97;
-      border-radius: 50% 50% 0 0;
-    }
-
-    .heart:before,
-    .heart:after {
-      content: "";
-      position: absolute;
-      width: 60px;
-      height: 60px;
-      background: #f28c97;
-      border-radius: 50%;
-    }
-
-    .heart:before {
-      top: -30px;
-      left: 0;
-    }
-
-    .heart:after {
-      left: 30px;
-      top: 0;
-    }
-
-    .message {
-      display: none;
-      max-width: 90%;
-      margin-top: 30px;
-      padding: 20px;
-      background: #fff;
-      border-radius: 15px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      color: #5a4b4b;
+    .mensagem {
+      max-width: 700px;
+      font-size: 1.4em;
       line-height: 1.6;
-      font-size: 1rem;
-      text-align: justify;
-      animation: fadeIn 1.5s ease forwards;
       white-space: pre-wrap;
+      border: 2px solid rgba(255,255,255,0.5);
+      padding: 25px;
+      border-radius: 20px;
+      background-color: rgba(255,255,255,0.1);
+      backdrop-filter: blur(5px);
+      box-shadow: 0 0 15px rgba(255,255,255,0.2);
     }
 
     @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    button {
-      margin-top: 25px;
-      padding: 12px 30px;
-      font-size: 1rem;
-      background: #f28c97;
-      color: white;
-      border: none;
-      border-radius: 25px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-
-    button:hover {
-      background: #e47b87;
-      transform: translateY(-2px);
-    }
-
-    .heart-float {
-      position: absolute;
-      color: #f2b6bd;
-      font-size: 20px;
-      animation: float 5s linear infinite;
-      opacity: 0.7;
-    }
-
-    @keyframes float {
-      0% {
-        transform: translateY(100vh) scale(0.5);
-        opacity: 0;
-      }
-      50% {
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-10vh) scale(1);
-        opacity: 0;
-      }
+    .digitando span {
+      opacity: 0;
+      display: inline-block;
+      animation: fadeIn 0.04s forwards;
     }
   </style>
 </head>
 <body>
-  <h1>💌 Para Juliana 💌</h1>
+  <audio autoplay loop>
+    <source src="https://www.youtube.com/embed/xua1aWzCRZM?autoplay=1&loop=1" type="audio/mp3">
+  </audio>
 
-  <div class="envelope" id="envelope">
-    <div class="heart"></div>
-  </div>
-
-  <button id="openBtn">Abrir mensagem</button>
-
-  <div class="message" id="message">
-Oi meu amor!
-
-Passando pra te desejar um feliz aniversário, tudo de bom em sua vida, muita paz, prosperidade, saúde e muitos caminhos abertos.
-
-Acima de tudo continue sendo essa mulher guerreira, especial e maravilhosa com princípios cujo só você tem. Cujo eu conheci a mulher mais incrível que já passou em toda minha vida.
-
-Lamento por tudo o que houve conosco, por todas as vezes que brigamos, e todas as vezes que te decepcionei, com minhas palavras e atitudes. Você é incrível, e merece o mundo, onde eu tento e peço todos os dias a melhora para que eu consiga.
-
-Obrigado por sempre me ajudar, por sempre me apoiar, aconselhar ser minha segunda mãe KKKK, obrigado por estar comigo nos meus melhores e piores momentos, nossa dívida será eterna, te agradeço muito pela mulher que você é para mim.
-
-Você sempre será a minha dona encrenca, sempre terá um lugar no meu coração onde ninguém nunca vai ocupar, a não ser você! Espero conquistar tudo novamente com você, onde possamos olhar para trás e dar risada juntos, que se for da vontade dos nossos guias que nossos caminhos estejam cruzados (ainda vou tentar falar pro caveira ser menos bravo) KKKKK brincadeira.
-
-Que essa sua fase, seja abençoada, uma nova fase de responsabilidade e direitos, que você seja MUITO abençoada. Estarei sempre com você, aqui, além daqui e pra sempre.
-
-Amo você, Juliana França Lima! 💖
-  </div>
-
-  <iframe
-    id="bgMusic"
-    width="0"
-    height="0"
-    src="https://www.youtube.com/embed/2Vv-BfVoq4g?autoplay=1&loop=1&playlist=2Vv-BfVoq4g"
-    frameborder="0"
-    allow="autoplay"
-  ></iframe>
+  <div class="mensagem digitando" id="mensagem"></div>
 
   <script>
-    const envelope = document.getElementById("envelope");
-    const openBtn = document.getElementById("openBtn");
-    const message = document.getElementById("message");
+    const texto = `
+Juliana 💌
 
-    openBtn.addEventListener("click", () => {
-      envelope.classList.add("open");
-      message.style.display = "block";
-    });
+Desde o primeiro momento em que te vi, algo dentro de mim mudou. 
+Cada sorriso teu, cada palavra, cada instante ao teu lado foi construindo algo que eu nunca imaginei sentir — algo verdadeiro, puro e forte.
 
-    function createHeart() {
-      const heart = document.createElement("div");
-      heart.classList.add("heart-float");
-      heart.textContent = "💖";
-      heart.style.left = Math.random() * 100 + "vw";
-      heart.style.animationDuration = Math.random() * 3 + 3 + "s";
-      document.body.appendChild(heart);
-      setTimeout(() => heart.remove(), 6000);
+Você é luz nos meus dias nublados, é calma quando o mundo parece barulhento demais. 
+E mesmo nas pequenas coisas, você tem o dom de deixar tudo mais bonito.
+
+Essa carta é só um pedacinho do que eu sinto, mas saiba: 
+você é especial de um jeito que palavras nunca vão conseguir explicar. 
+Talvez por isso eu tenha escolhido te escrever assim — pra deixar registrado que meu coração sorri quando pensa em você.
+
+Com carinho,
+💗 De alguém que pensa em você todos os dias.
+    `;
+
+    const mensagem = document.getElementById("mensagem");
+
+    function digitarTexto(texto, elemento, intervalo) {
+      elemento.innerHTML = "";
+      texto.split("").forEach((letra, i) => {
+        const span = document.createElement("span");
+        span.textContent = letra;
+        span.style.animationDelay = `${i * intervalo}s`;
+        elemento.appendChild(span);
+      });
     }
 
-    setInterval(createHeart, 500);
+    digitarTexto(texto, mensagem, 0.05);
   </script>
 </body>
 </html>
