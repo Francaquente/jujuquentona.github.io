@@ -5,9 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>💌 Para Juliana 💌</title>
   <style>
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
     body {
       font-family: "Poppins", sans-serif;
       background: linear-gradient(135deg, #ffd6e8, #ffb6c1);
@@ -15,66 +13,46 @@
       padding: 40px 20px;
       overflow-x: hidden;
     }
-    h1 {
-      color: #d63384;
-      font-size: 2rem;
-      margin-bottom: 20px;
-    }
+    h1 { color: #d63384; font-size: 2rem; margin-bottom: 20px; }
+
     .envelope {
-      width: 200px;
-      height: 130px;
-      background: white;
-      margin: 0 auto 30px;
-      border-radius: 10px;
-      position: relative;
+      width: 200px; height: 130px;
+      background: white; margin: 0 auto 30px;
+      border-radius: 10px; position: relative;
       box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
     .envelope::before {
       content: '';
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 0;
-      height: 0;
+      top: 0; left: 0;
+      width: 0; height: 0;
       border-left: 100px solid transparent;
       border-right: 100px solid transparent;
       border-bottom: 70px solid #ff69b4;
       border-radius: 5px 5px 0 0;
     }
+
     button {
-      background: #ff4f84;
-      color: white;
-      border: none;
-      padding: 14px 25px;
-      border-radius: 40px;
-      font-size: 1.1rem;
-      cursor: pointer;
-      margin: 10px;
+      background: #ff4f84; color: white;
+      border: none; padding: 14px 25px;
+      border-radius: 40px; font-size: 1.1rem;
+      cursor: pointer; margin: 10px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.2);
       transition: all 0.3s ease;
     }
-    button:hover {
-      background: #ff2975;
-      transform: scale(1.05);
-    }
+    button:hover { background: #ff2975; transform: scale(1.05); }
+
     .mensagem {
-      display: none;
-      background: white;
-      color: #333;
-      margin: 40px auto;
-      padding: 20px;
-      border-radius: 20px;
-      width: 90%;
-      max-width: 600px;
+      display: none; background: white; color: #333;
+      margin: 40px auto; padding: 20px;
+      border-radius: 20px; width: 90%; max-width: 600px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-      line-height: 1.7;
-      position: relative;
+      line-height: 1.7; position: relative;
     }
+
     .heart {
-      position: absolute;
-      font-size: 20px;
-      color: #ff4f84;
-      animation: float 4s infinite ease-in-out;
+      position: absolute; font-size: 20px;
+      color: #ff4f84; animation: float 4s infinite ease-in-out;
     }
     @keyframes float {
       0% { transform: translateY(0) scale(1); opacity: 1; }
@@ -89,7 +67,7 @@
   <div class="envelope"></div>
 
   <button id="abrir">💖 Abrir mensagem</button>
-  <button id="musica">🎵 Música tocando...</button>
+  <button id="tocar">🎵 Tocar música</button>
 
   <div class="mensagem" id="mensagem">
     <p>Oi meu amor! 💖</p>
@@ -108,7 +86,7 @@
 
   <script>
     const botaoMensagem = document.getElementById("abrir");
-    const botaoMusica = document.getElementById("musica");
+    const botaoTocar = document.getElementById("tocar");
     const mensagem = document.getElementById("mensagem");
     const audio = document.getElementById("audio");
 
@@ -116,7 +94,6 @@
       mensagem.style.display = "block";
       window.scrollTo({ top: mensagem.offsetTop, behavior: "smooth" });
 
-      // corações flutuantes
       for (let i = 0; i < 15; i++) {
         const heart = document.createElement("div");
         heart.className = "heart";
@@ -129,8 +106,13 @@
       }
     });
 
-    botaoMusica.addEventListener("click", () => {
-      audio.play().catch(() => alert("Toque na tela para permitir o áudio 🎶"));
+    botaoTocar.addEventListener("click", () => {
+      audio.play().then(() => {
+        botaoTocar.textContent = "🎶 Música tocando...";
+        botaoTocar.disabled = true;
+      }).catch(() => {
+        alert("Toque na tela para permitir o áudio 🎵");
+      });
     });
   </script>
 </body>
