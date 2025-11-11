@@ -1,49 +1,44 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>💌 Para Juliana 💌</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
-
     body {
-      min-height: 100vh;
-      background: linear-gradient(to bottom right, #ffd6e8, #ffe6ef);
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(180deg, #fff, #fce4ec);
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
       font-family: "Poppins", sans-serif;
-      overflow-x: hidden;
+      overflow-y: auto;
+      scroll-behavior: smooth;
+      position: relative;
     }
 
     h1 {
-      font-size: 2em;
-      color: #d63384;
-      margin-bottom: 25px;
+      color: #c66a80;
+      margin-top: 40px;
+      font-weight: 600;
       text-align: center;
+      animation: fadeIn 1.5s ease forwards;
     }
 
-    /* ENVELOPE BRANCO */
     .envelope {
-      width: 200px;
-      height: 130px;
-      background: #ffffff;
-      border-radius: 10px;
       position: relative;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-      transition: transform 0.6s ease-in-out;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      width: 230px;
+      height: 140px;
+      background: #fff;
+      border: 2px solid #e0d8d6;
+      border-radius: 12px;
+      overflow: hidden;
       cursor: pointer;
-      margin-bottom: 25px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: all 0.6s ease;
+      margin-top: 20px;
     }
 
     .envelope::before {
@@ -51,13 +46,11 @@
       position: absolute;
       top: 0;
       left: 0;
-      width: 0;
-      height: 0;
-      border-left: 100px solid transparent;
-      border-right: 100px solid transparent;
-      border-bottom: 65px solid #ffffff;
-      border-radius: 10px 10px 0 0;
-      transition: transform 0.6s ease-in-out;
+      width: 100%;
+      height: 100%;
+      background: #f8bbd0;
+      clip-path: polygon(0 0, 100% 0, 50% 50%);
+      transition: transform 0.6s ease;
       transform-origin: top;
     }
 
@@ -65,63 +58,96 @@
       transform: rotateX(180deg);
     }
 
-    .envelope span {
-      font-size: 2.5em;
+    .heart {
+      position: absolute;
+      top: 35%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(-45deg);
+      width: 60px;
+      height: 60px;
+      background: #f28c97;
+      border-radius: 50% 50% 0 0;
     }
 
-    /* BOTÕES */
+    .heart::before,
+    .heart::after {
+      content: "";
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      background: #f28c97;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -30px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: 30px;
+      top: 0;
+    }
+
+    .message {
+      display: none;
+      max-width: 90%;
+      margin: 30px auto;
+      padding: 25px;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      color: #444;
+      line-height: 1.8;
+      font-size: 1rem;
+      animation: fadeIn 2s ease forwards;
+      white-space: pre-wrap;
+    }
+
     button {
-      background: #ff4b8b;
-      border: none;
-      color: white;
-      font-size: 1.1em;
+      margin-top: 25px;
       padding: 12px 25px;
-      margin: 8px;
-      border-radius: 50px;
+      font-size: 1rem;
+      background: #f28c97;
+      color: white;
+      border: none;
+      border-radius: 25px;
       cursor: pointer;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
-      transition: 0.3s;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
 
     button:hover {
-      background: #ff6fa8;
-      transform: scale(1.05);
+      background: #e57383;
+      transform: translateY(-2px);
     }
 
-    /* MENSAGEM */
-    .mensagem {
+    #musicStatus {
+      margin-top: 10px;
+      color: #777;
+      font-size: 0.95rem;
       display: none;
-      background: white;
-      color: #333;
-      border-radius: 20px;
-      padding: 30px;
-      max-width: 90%;
-      width: 600px;
-      margin-top: 40px;
-      font-size: 1.1em;
-      line-height: 1.6;
-      text-align: justify;
-      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+      animation: fadeIn 1s ease;
     }
 
-    /* CORAÇÕES FLUTUANTES */
-    .heart {
+    .heart-float {
       position: fixed;
-      bottom: -10px;
-      color: #ff4b8b;
-      font-size: 1.5em;
-      animation: subir 5s linear infinite;
+      color: #f48fb1;
+      font-size: 20px;
+      animation: float 6s linear infinite;
+      opacity: 0.7;
+      pointer-events: none;
     }
 
-    @keyframes subir {
-      0% {
-        transform: translateY(0) scale(1);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-100vh) scale(0.6);
-        opacity: 0;
-      }
+    @keyframes float {
+      0% { transform: translateY(100vh) scale(0.6); opacity: 0; }
+      50% { opacity: 1; }
+      100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
@@ -129,83 +155,66 @@
   <h1>💌 Para Juliana 💌</h1>
 
   <div class="envelope" id="envelope">
-    <span>💖</span>
+    <div class="heart"></div>
   </div>
 
-  <button id="abrir">💝 Abrir mensagem</button>
-  <button id="musica">🎵 Tocar música</button>
+  <button id="playMusic">🎵 Tocar música</button>
+  <p id="musicStatus">🎶 Música tocando...</p>
+  <button id="openBtn">Abrir mensagem</button>
 
-  <div class="mensagem" id="mensagem">
-    <p>Oi meu amor! 💖</p>
+  <div class="message" id="message">
+Oi meu amor!
 
-    <p>Passando pra te desejar um feliz aniversário, tudo de bom em sua vida, muita paz, prosperidade, saúde e muitos caminhos abertos.</p>
+Passando pra te desejar um feliz aniversário, tudo de bom em sua vida, muita paz, prosperidade, saúde e muitos caminhos abertos.
 
-    <p>Acima de tudo continue sendo essa mulher guerreira, especial e maravilhosa com princípios cujo só você tem. Cujo eu conheci a mulher mais incrível que já passou em toda minha vida.</p>
+Acima de tudo continue sendo essa mulher guerreira, especial e maravilhosa com princípios cujo só você tem. Cujo eu conheci a mulher mais incrível que já passou em toda minha vida.
 
-    <p>Lamento por tudo o que houve conosco, por todas as vezes que brigamos, e todas as vezes que te decepcionei, com minhas palavras e atitudes. Você é incrível, e merece o mundo, onde eu tento e peço todos os dias a melhora para que eu consiga.</p>
+Lamento por tudo o que houve conosco, por todas as vezes que brigamos, e todas as vezes que te decepcionei, com minhas palavras e atitudes. Você é incrível, e merece o mundo, onde eu tento e peço todos os dias a melhora para que eu consiga.
 
-    <p>Obrigado por sempre me ajudar, por sempre me apoiar, aconselhar, ser minha segunda mãe KKKKk, obrigado por estar comigo nos meus melhores e piores momentos, nossa dívida será eterna, te agradeço muito pela mulher que você é para mim.</p>
+Obrigado por sempre me ajudar, por sempre me apoiar, aconselhar, ser minha segunda mãe KKKK, obrigado por estar comigo nos meus melhores e piores momentos, nossa dívida será eterna. Te agradeço muito pela mulher que você é para mim.
 
-    <p>Você sempre será a minha dona encrenca, sempre terá um lugar no meu coração onde ninguém nunca vai ocupar, a não ser você! Espero conquistar tudo novamente com você, onde possamos olhar para trás e dar risada juntos.</p>
+Você sempre será a minha dona encrenca, sempre terá um lugar no meu coração onde ninguém nunca vai ocupar, a não ser você! Espero conquistar tudo novamente com você, onde possamos olhar para trás e dar risada juntos, que se for da vontade dos nossos guias, que nossos caminhos estejam cruzados (ainda vou tentar falar pro caveira ser menos bravo) KKKKK brincadeira.
 
-    <p>Que essa sua fase seja abençoada, uma nova fase de responsabilidade e direitos, que você seja MUITO abençoada. Estarei sempre com você, aqui, além daqui e pra sempre.</p>
+Que essa sua fase seja abençoada, uma nova fase de responsabilidade e direitos, que você seja MUITO abençoada. Estarei sempre com você, aqui, além daqui e pra sempre.
 
-    <p>Amo você, Juliana França Lima! 💞</p>
+Amo você, Juliana França Lima! 💖
   </div>
 
-  <audio id="audio">
+  <audio id="audio" loop>
     <source src="ytmp3free.cc_moby-the-last-day-with-skylar-grey-youtubemp3free.org.mp3" type="audio/mpeg">
+    Seu navegador não suporta áudio.
   </audio>
 
   <script>
-    const envelope = document.getElementById('envelope');
-    const btnAbrir = document.getElementById('abrir');
-    const btnMusica = document.getElementById('musica');
-    const mensagem = document.getElementById('mensagem');
-    const audio = document.getElementById('audio');
+    const envelope = document.getElementById("envelope");
+    const openBtn = document.getElementById("openBtn");
+    const message = document.getElementById("message");
+    const playBtn = document.getElementById("playMusic");
+    const music = document.getElementById("audio");
+    const musicStatus = document.getElementById("musicStatus");
 
-    // Abrir envelope + mostrar mensagem
-    btnAbrir.addEventListener('click', () => {
-      envelope.classList.add('open');
-      setTimeout(() => {
-        mensagem.style.display = 'block';
-        window.scrollTo({ top: mensagem.offsetTop, behavior: 'smooth' });
-        gerarCoracoes();
-      }, 600);
+    openBtn.addEventListener("click", () => {
+      envelope.classList.add("open");
+      message.style.display = "block";
     });
 
-    // Tocar música
-    btnMusica.addEventListener('click', () => {
-      audio.play().then(() => {
-        btnMusica.innerText = '🎶 Música tocando...';
-      }).catch(() => {
-        alert('Toque na tela para permitir o som 💕');
-      });
+    playBtn.addEventListener("click", () => {
+      music.play();
+      musicStatus.style.display = "block";
+      playBtn.style.display = "none";
     });
 
-    // Corações flutuantes
-    function gerarCoracoes() {
-      setInterval(() => {
-        const heart = document.createElement('div');
-        heart.classList.add('heart');
-        heart.innerText = '💗';
-        heart.style.left = Math.random() * 100 + 'vw';
-        heart.style.animationDuration = Math.random() * 2 + 3 + 's';
-        document.body.appendChild(heart);
-        setTimeout(() => heart.remove(), 5000);
-      }, 400);
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart-float");
+      heart.textContent = "💖";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = Math.random() * 4 + 4 + "s";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 6000);
     }
+
+    setInterval(createHeart, 700);
   </script>
 </body>
 </html>
-
-   
-     
-      
-     
-
- 
-
- 
- 
-   
