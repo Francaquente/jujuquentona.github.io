@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>💌 Para Juliana 💌</title>
   <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
       height: 100vh;
@@ -13,46 +17,48 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
       overflow-x: hidden;
-      scroll-behavior: smooth;
+      text-align: center;
     }
 
     h1 {
       color: #d63384;
       text-align: center;
-      margin-bottom: 10px;
+      margin: 30px 10px;
+      font-size: 2em;
+      word-break: keep-all;
     }
 
     .envelope {
-      width: 120px;
-      height: 100px;
+      width: 150px;
+      height: 110px;
       background-color: #ff4d79;
       position: relative;
-      border-radius: 10px;
-      cursor: pointer;
+      border-radius: 12px;
+      margin-top: 10px;
       transition: transform 0.5s;
-      box-shadow: 0 0 20px rgba(255, 0, 102, 0.4);
+      box-shadow: 0 0 25px rgba(255, 0, 102, 0.4);
     }
 
     .envelope::before {
       content: "";
       position: absolute;
-      top: -50px;
+      top: -55px;
       left: 0;
       width: 0;
       height: 0;
-      border-left: 60px solid transparent;
-      border-right: 60px solid transparent;
-      border-bottom: 50px solid #ff4d79;
+      border-left: 75px solid transparent;
+      border-right: 75px solid transparent;
+      border-bottom: 55px solid #ff4d79;
     }
 
     .buttons {
       display: flex;
-      gap: 15px;
-      margin-top: 20px;
       flex-wrap: wrap;
       justify-content: center;
+      gap: 15px;
+      margin-top: 25px;
     }
 
     button {
@@ -74,26 +80,34 @@
 
     .mensagem {
       display: none;
-      max-width: 600px;
+      max-width: 90%;
+      width: 600px;
       padding: 25px;
       background-color: white;
       border-radius: 15px;
-      margin-top: 30px;
+      margin: 40px auto;
       color: #333;
       font-size: 18px;
       line-height: 1.8;
-      box-shadow: 0 0 20px rgba(255, 0, 102, 0.2);
+      box-shadow: 0 0 25px rgba(255, 0, 102, 0.3);
       text-align: justify;
+      overflow-y: auto;
+      max-height: 70vh;
     }
 
     .mensagem p {
       margin-bottom: 15px;
+    }
+
+    audio {
+      display: none;
     }
   </style>
 </head>
 
 <body>
   <h1>💌 Para Juliana 💌</h1>
+
   <div class="envelope" id="envelope"></div>
 
   <div class="buttons">
@@ -135,7 +149,7 @@
     botaoMensagem.addEventListener('click', () => {
       envelope.style.display = 'none';
       mensagem.style.display = 'block';
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({ top: mensagem.offsetTop, behavior: 'smooth' });
     });
 
     // Tocar música
