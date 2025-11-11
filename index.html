@@ -1,126 +1,145 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>💌 Para Juliana 💌</title>
   <style>
-    html { scroll-behavior: smooth; }
-    body {
+    * {
       margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
       height: 100vh;
-      background: linear-gradient(135deg, #ffe0f0, #ffd6e8);
-      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to bottom right, #ffd6e8, #ffebf2);
       display: flex;
       flex-direction: column;
+      justify-content: center;
       align-items: center;
-      justify-content: flex-start;
-      text-align: center;
+      font-family: "Poppins", sans-serif;
       overflow-x: hidden;
     }
 
     h1 {
       color: #d63384;
-      text-align: center;
-      margin: 25px 10px;
       font-size: 2em;
+      text-align: center;
+      margin-bottom: 20px;
     }
 
     .envelope {
-      width: 220px;
-      height: 160px;
-      background-color: #ff6699;
+      width: 180px;
+      height: 120px;
+      background: white;
       border-radius: 10px;
-      margin-top: 15px;
+      position: relative;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
       display: flex;
-      align-items: center;
       justify-content: center;
-      font-size: 65px;
-      box-shadow: 0 0 30px rgba(255, 51, 119, 0.3);
+      align-items: center;
+      margin-bottom: 30px;
     }
 
-    .buttons {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 15px;
-      margin-top: 30px;
+    .envelope::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 0;
+      border-left: 90px solid transparent;
+      border-right: 90px solid transparent;
+      border-bottom: 60px solid #ffffff;
+      border-radius: 10px 10px 0 0;
+    }
+
+    .envelope span {
+      font-size: 2.5em;
     }
 
     button {
-      background-color: #e83e8c;
-      color: white;
+      background: #ff4b8b;
       border: none;
+      color: white;
+      font-size: 1.1em;
       padding: 12px 25px;
-      border-radius: 30px;
+      margin: 10px;
+      border-radius: 50px;
       cursor: pointer;
-      font-size: 16px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
       transition: 0.3s;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     }
-    button:hover { transform: scale(1.05); background-color: #ff5fa3; }
+
+    button:hover {
+      background: #ff6fa8;
+      transform: scale(1.05);
+    }
 
     .mensagem {
       display: none;
-      position: relative;
+      background: white;
+      color: #333;
+      border-radius: 20px;
+      padding: 30px;
       max-width: 90%;
       width: 600px;
-      padding: 25px;
-      background-color: white;
-      border-radius: 15px;
-      margin: 40px auto;
-      color: #333;
-      font-size: 18px;
-      line-height: 1.8;
-      box-shadow: 0 0 25px rgba(255, 0, 102, 0.3);
+      margin-top: 40px;
+      font-size: 1.1em;
+      line-height: 1.6;
       text-align: justify;
-      overflow-y: auto;
-      max-height: 70vh;
-      animation: fadeIn 1s ease;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+      position: relative;
     }
 
-    .mensagem p { margin-bottom: 15px; }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* corações flutuando */
     .heart {
       position: fixed;
-      font-size: 22px;
-      color: #ff5fa3;
-      animation: float 5s ease-in-out infinite;
-      pointer-events: none;
-      opacity: 0.8;
-      z-index: 1000;
+      bottom: -10px;
+      color: #ff4b8b;
+      font-size: 1.5em;
+      animation: subir 5s linear infinite;
     }
 
-    @keyframes float {
-      0% { transform: translateY(0) scale(1); opacity: 1; }
-      100% { transform: translateY(-100vh) scale(1.6); opacity: 0; }
+    @keyframes subir {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100vh) scale(0.6);
+        opacity: 0;
+      }
     }
   </style>
 </head>
 <body>
+
   <h1>💌 Para Juliana 💌</h1>
 
-  <div class="envelope" id="envelope">💌</div>
-
-  <div class="buttons">
-    <button id="abrir">💖 Abrir mensagem</button>
-    <button id="musica">🎵 Tocar música</button>
+  <div class="envelope" id="envelope">
+    <span>💖</span>
   </div>
+
+  <button id="abrir">💝 Abrir mensagem</button>
+  <button id="musica">🎵 Tocar música</button>
 
   <div class="mensagem" id="mensagem">
     <p>Oi meu amor! 💖</p>
+
     <p>Passando pra te desejar um feliz aniversário, tudo de bom em sua vida, muita paz, prosperidade, saúde e muitos caminhos abertos.</p>
+
     <p>Acima de tudo continue sendo essa mulher guerreira, especial e maravilhosa com princípios cujo só você tem. Cujo eu conheci a mulher mais incrível que já passou em toda minha vida.</p>
+
     <p>Lamento por tudo o que houve conosco, por todas as vezes que brigamos, e todas as vezes que te decepcionei, com minhas palavras e atitudes. Você é incrível, e merece o mundo, onde eu tento e peço todos os dias a melhora para que eu consiga.</p>
-    <p>Obrigado por sempre me ajudar, por sempre me apoiar, aconselhar, ser minha segunda mãe KKKKk. Obrigado por estar comigo nos meus melhores e piores momentos, nossa dívida será eterna, te agradeço muito pela mulher que você é para mim.</p>
-    <p>Você sempre será a minha dona encrenca, sempre terá um lugar no meu coração onde ninguém nunca vai ocupar, a não ser você! Espero conquistar tudo novamente com você, onde possamos olhar para trás e dar risada juntos. Que se for da vontade dos nossos guias, que nossos caminhos estejam cruzados (ainda vou tentar falar pro Caveira ser menos bravo) KKKKK brincadeira.</p>
+
+    <p>Obrigado por sempre me ajudar, por sempre me apoiar, aconselhar, ser minha segunda mãe KKKKk, obrigado por estar comigo nos meus melhores e piores momentos, nossa dívida será eterna, te agradeço muito pela mulher que você é para mim.</p>
+
+    <p>Você sempre será a minha dona encrenca, sempre terá um lugar no meu coração onde ninguém nunca vai ocupar, a não ser você! Espero conquistar tudo novamente com você, onde possamos olhar para trás e dar risada juntos.</p>
+
     <p>Que essa sua fase seja abençoada, uma nova fase de responsabilidade e direitos, que você seja MUITO abençoada. Estarei sempre com você, aqui, além daqui e pra sempre.</p>
+
     <p>Amo você, Juliana França Lima! 💞</p>
   </div>
 
@@ -129,46 +148,35 @@
   </audio>
 
   <script>
-    const envelope = document.getElementById('envelope');
+    const btnMsg = document.getElementById('abrir');
+    const btnMusic = document.getElementById('musica');
     const mensagem = document.getElementById('mensagem');
-    const botaoMensagem = document.getElementById('abrir');
-    const botaoMusica = document.getElementById('musica');
-    const musica = document.getElementById('audio');
-    let musicaTocando = false;
-    let coracoesAtivos = false;
+    const audio = document.getElementById('audio');
 
-    botaoMensagem.addEventListener('click', () => {
-      envelope.style.display = 'none';
+    btnMsg.addEventListener('click', () => {
       mensagem.style.display = 'block';
       window.scrollTo({ top: mensagem.offsetTop, behavior: 'smooth' });
       gerarCoracoes();
     });
 
-    botaoMusica.addEventListener('click', () => {
-      if (!musicaTocando) {
-        musica.play().then(() => {
-          musicaTocando = true;
-          botaoMusica.textContent = "🎶 Música tocando...";
-        }).catch(() => alert('Toque na tela para permitir o áudio 🎵'));
-      } else {
-        musica.pause();
-        musica.currentTime = 0;
-        musicaTocando = false;
-        botaoMusica.textContent = "🎵 Tocar música";
-      }
+    btnMusic.addEventListener('click', () => {
+      audio.play().then(() => {
+        btnMusic.innerText = '🎶 Música tocando...';
+      }).catch(() => {
+        alert('Toque na tela para permitir o som 💕');
+      });
     });
 
+    // Função dos corações flutuantes 💖
     function gerarCoracoes() {
-      if (coracoesAtivos) return;
-      coracoesAtivos = true;
       setInterval(() => {
         const heart = document.createElement('div');
         heart.classList.add('heart');
-        heart.textContent = '💖';
+        heart.innerText = '💗';
         heart.style.left = Math.random() * 100 + 'vw';
-        heart.style.animationDuration = (3 + Math.random() * 3) + 's';
+        heart.style.animationDuration = Math.random() * 2 + 3 + 's';
         document.body.appendChild(heart);
-        setTimeout(() => heart.remove(), 6000);
+        setTimeout(() => heart.remove(), 5000);
       }, 400);
     }
   </script>
