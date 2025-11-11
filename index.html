@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>💌 Para Juliana 💌</title>
   <style>
     html {
@@ -12,14 +12,14 @@
     body {
       margin: 0;
       height: 100vh;
-      background: linear-gradient(to bottom right, #ffd6e8, #ffe6f0);
+      background: linear-gradient(135deg, #ffe0f0, #ffd6e8);
       font-family: 'Poppins', sans-serif;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: flex-start;
-      overflow-x: hidden;
       text-align: center;
+      overflow-x: hidden;
     }
 
     h1 {
@@ -27,30 +27,37 @@
       text-align: center;
       margin: 30px 10px;
       font-size: 2em;
-      word-break: keep-all;
     }
 
+    /* NOVO ENVELOPE */
     .envelope {
-      width: 150px;
+      width: 160px;
       height: 110px;
-      background-color: #ff4d79;
+      background-color: #ff6699;
       position: relative;
-      border-radius: 12px;
-      margin-top: 10px;
-      transition: transform 0.5s;
-      box-shadow: 0 0 25px rgba(255, 0, 102, 0.4);
+      border-radius: 10px;
+      margin-top: 20px;
+      box-shadow: 0 0 30px rgba(255, 51, 119, 0.3);
+      transition: transform 0.6s ease;
     }
 
     .envelope::before {
       content: "";
       position: absolute;
-      top: -55px;
+      top: 0;
       left: 0;
       width: 0;
       height: 0;
-      border-left: 75px solid transparent;
-      border-right: 75px solid transparent;
-      border-bottom: 55px solid #ff4d79;
+      border-left: 80px solid transparent;
+      border-right: 80px solid transparent;
+      border-bottom: 55px solid #ff3366;
+      border-radius: 6px;
+      transform-origin: bottom;
+      transition: transform 0.6s ease;
+    }
+
+    .envelope.open::before {
+      transform: rotateX(180deg);
     }
 
     .buttons {
@@ -58,7 +65,7 @@
       flex-wrap: wrap;
       justify-content: center;
       gap: 15px;
-      margin-top: 25px;
+      margin-top: 30px;
     }
 
     button {
@@ -70,7 +77,7 @@
       cursor: pointer;
       font-size: 16px;
       transition: 0.3s;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     }
 
     button:hover {
@@ -104,7 +111,6 @@
     }
   </style>
 </head>
-
 <body>
   <h1>💌 Para Juliana 💌</h1>
 
@@ -145,18 +151,33 @@
     const botaoMusica = document.getElementById('musica');
     const musica = document.getElementById('audio');
 
+    let musicaTocando = false;
+
     // Abrir mensagem
     botaoMensagem.addEventListener('click', () => {
-      envelope.style.display = 'none';
-      mensagem.style.display = 'block';
-      window.scrollTo({ top: mensagem.offsetTop, behavior: 'smooth' });
+      envelope.classList.add('open');
+      setTimeout(() => {
+        envelope.style.display = 'none';
+        mensagem.style.display = 'block';
+        window.scrollTo({ top: mensagem.offsetTop, behavior: 'smooth' });
+      }, 600);
     });
 
     // Tocar música
     botaoMusica.addEventListener('click', () => {
-      musica.play().catch(() => {
-        alert('Toque na tela para permitir o áudio 🎵');
-      });
+      if (!musicaTocando) {
+        musica.play().then(() => {
+          musicaTocando = true;
+          botaoMusica.textContent = "🎶 Música tocando...";
+        }).catch(() => {
+          alert('Toque na tela para permitir o áudio 🎵');
+        });
+      } else {
+        musica.pause();
+        musica.currentTime = 0;
+        musicaTocando = false;
+        botaoMusica.textContent = "🎵 Tocar música";
+      }
     });
   </script>
 </body>
