@@ -1,230 +1,138 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>💌 Para Juliana 💌</title>
   <style>
     body {
       margin: 0;
       height: 100vh;
-      background: linear-gradient(180deg, #fef6f6, #fde9e9);
+      background: linear-gradient(135deg, #ffe6ec, #ffb6c1);
+      font-family: "Poppins", sans-serif;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      font-family: "Poppins", sans-serif;
-      overflow-x: hidden;
-      scroll-behavior: smooth;
-    }
-
-    h1 {
-      color: #b67a83;
-      font-weight: 500;
-      font-size: 2rem;
-      margin-bottom: 30px;
-      text-align: center;
-      animation: fadeIn 1.5s ease forwards;
+      overflow: hidden;
     }
 
     .envelope {
-      position: relative;
       width: 220px;
-      height: 130px;
-      background: #fff;
-      border: 2px solid #e0d8d6;
-      border-radius: 10px;
-      overflow: hidden;
+      height: 180px;
+      background: #ff5c8d;
+      position: relative;
+      border-radius: 8px;
       cursor: pointer;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      transition: all 0.6s ease;
+      transition: transform 0.3s ease;
     }
 
-    .envelope:before {
+    .envelope:hover {
+      transform: scale(1.05);
+    }
+
+    .envelope::before {
       content: "";
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: #f2b6bd;
-      clip-path: polygon(0 0, 100% 0, 50% 50%);
-      transition: transform 0.6s ease;
-      transform-origin: top;
-    }
-
-    .envelope.open:before {
-      transform: rotateX(180deg);
+      background: #ff7fa8;
+      clip-path: polygon(0 0, 50% 50%, 100% 0);
+      border-radius: 8px;
     }
 
     .heart {
       position: absolute;
-      top: 35%;
+      top: 60%;
       left: 50%;
-      transform: translate(-50%, -50%) rotate(-45deg);
-      width: 60px;
-      height: 60px;
-      background: #f28c97;
-      border-radius: 50% 50% 0 0;
+      transform: translate(-50%, -50%);
+      font-size: 60px;
     }
 
-    .heart:before,
-    .heart:after {
-      content: "";
-      position: absolute;
-      width: 60px;
-      height: 60px;
-      background: #f28c97;
-      border-radius: 50%;
-    }
-
-    .heart:before {
-      top: -30px;
-      left: 0;
-    }
-
-    .heart:after {
-      left: 30px;
-      top: 0;
-    }
-
-    .message {
+    .mensagem {
       display: none;
-      max-width: 90%;
       margin-top: 30px;
-      padding: 20px;
-      background: #fff;
-      border-radius: 15px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      color: #5a4b4b;
-      line-height: 1.6;
-      font-size: 1rem;
-      text-align: justify;
-      white-space: pre-line;
-      animation: fadeIn 1.5s ease forwards;
-      overflow-y: auto;
-      max-height: 60vh;
+      background: white;
+      padding: 25px;
+      border-radius: 16px;
+      max-width: 90%;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+      font-size: 17px;
+      color: #333;
+      line-height: 1.8;
+      animation: fadeIn 1s ease;
     }
 
     @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    button {
-      margin-top: 15px;
-      padding: 12px 30px;
-      font-size: 1rem;
-      background: #f28c97;
+    .botao {
+      margin-top: 20px;
+      padding: 12px 25px;
+      background: #ff5c8d;
       color: white;
       border: none;
-      border-radius: 25px;
+      border-radius: 30px;
+      font-size: 16px;
       cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: 0.3s;
     }
 
-    button:hover {
-      background: #e47b87;
-      transform: translateY(-2px);
-    }
-
-    .heart-float {
-      position: absolute;
-      color: #f2b6bd;
-      font-size: 20px;
-      animation: float 5s linear infinite;
-      opacity: 0.7;
-    }
-
-    @keyframes float {
-      0% {
-        transform: translateY(100vh) scale(0.5);
-        opacity: 0;
-      }
-      50% {
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-10vh) scale(1);
-        opacity: 0;
-      }
+    .botao:hover {
+      background: #ff7fa8;
     }
   </style>
 </head>
 <body>
-  <h1>💌 Para Juliana 💌</h1>
 
   <div class="envelope" id="envelope">
-    <div class="heart"></div>
+    <div class="heart">💌</div>
   </div>
 
-  <button id="musicBtn">🎵 Tocar música</button>
-  <button id="openBtn">Abrir mensagem</button>
+  <button class="botao" id="abrir">Abrir mensagem 💖</button>
+  <button class="botao" id="musica">🎵 Música tocando...</button>
 
-  <div class="message" id="message">
-Oi meu amor!
+  <div class="mensagem" id="mensagem">
+    <p>Oi meu amor! 💖</p>
 
-Passando pra te desejar um feliz aniversário, tudo de bom em sua vida, muita paz, prosperidade, saude e muitos caminhos abertos.
+    <p>Passando pra te desejar um feliz aniversário, tudo de bom em sua vida, muita paz, prosperidade, saúde e muitos caminhos abertos.</p>
 
-Acima de tudo continue sendo essa mulher guerreira, especial e maravilhosa com princípios cujo só você tem. Cujo eu conheci a mulher mais incrível que ja passou em toda minha vida.
+    <p>Acima de tudo continue sendo essa mulher guerreira, especial e maravilhosa com princípios cujo só você tem. Cujo eu conheci a mulher mais incrível que já passou em toda minha vida.</p>
 
-Lamento por tudo o que houve conosco, por todas as vezes que brigamos, e todas as vezes que te decepcionei, com minhas palavras e atitudes. Você é incrível, e merece o mundo, onde eu tento e peço todos os dias a melhora para que eu consiga 
+    <p>Lamento por tudo o que houve conosco, por todas as vezes que brigamos, e todas as vezes que te decepcionei, com minhas palavras e atitudes. Você é incrível, e merece o mundo, onde eu tento e peço todos os dias a melhora para que eu consiga.</p>
 
-Obrigado por sempre me ajudar, por sempre me apoiar, aconselhar ser minha segunda mae KKKKk, obrigado por estar comigo nos meus melhores e piores momentos, nossa divida sera eterna, te agradeço muito pela mulher que você é para mim.
+    <p>Obrigado por sempre me ajudar, por sempre me apoiar, aconselhar, ser minha segunda mãe KKKKk, obrigado por estar comigo nos meus melhores e piores momentos, nossa dívida será eterna, te agradeço muito pela mulher que você é para mim.</p>
 
-Você sempre sera a minha dona encrenca, sempre tera um lugar no meu coração onde ninguém nunca vai ocupar, a não ser você! espero conquistar tudo novamente com você, onde possamos olhar para traz e dar risada juntos, que ce for da vontade no nossos guias que nossos caminhos estejam cruzados (ainda vou tentar falar pro caveira ser menos bravo) KKKKK brincadeira.
+    <p>Você sempre será a minha dona encrenca, sempre terá um lugar no meu coração onde ninguém nunca vai ocupar, a não ser você! Espero conquistar tudo novamente com você, onde possamos olhar pra trás e dar risada juntos, que se for da vontade dos nossos guias que nossos caminhos estejam cruzados (ainda vou tentar falar pro caveira ser menos bravo) KKKKK brincadeira.</p>
 
-Que essa sua fase, seja abençoada, uma nova fase de responsabilidade e direitos, que você seja MUITO abençoada. estarei sempre com você, aqui, além daqui e pra sempre 
+    <p>Que essa sua fase seja abençoada, uma nova fase de responsabilidade e direitos, que você seja MUITO abençoada. Estarei sempre com você, aqui, além daqui e pra sempre.</p>
 
-Amo você, Juliana França Lima!
+    <p>Amo você, Juliana França Lima! 💘</p>
   </div>
 
-  <div id="player" style="display:none;">
-    <iframe width="0" height="0"
-      src="https://www.youtube.com/embed/xua1aWzCRZM?autoplay=1&loop=1"
-      title="The Last Day"
-      frameborder="0"
-      allow="autoplay">
-    </iframe>
-  </div>
+  <audio id="audio" autoplay loop>
+    <source src="Moby - O Último Dia.mp3" type="audio/mpeg">
+    Seu navegador não suporta áudio.
+  </audio>
 
   <script>
-    const envelope = document.getElementById("envelope");
-    const openBtn = document.getElementById("openBtn");
-    const message = document.getElementById("message");
-    const musicBtn = document.getElementById("musicBtn");
+    const envelope = document.getElementById('envelope');
+    const mensagem = document.getElementById('mensagem');
+    const botao = document.getElementById('abrir');
+    const musica = document.getElementById('audio');
 
-    openBtn.addEventListener("click", () => {
-      envelope.classList.add("open");
-      message.style.display = "block";
-      window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+    botao.addEventListener('click', () => {
+      mensagem.style.display = 'block';
+      envelope.style.display = 'none';
+      botao.style.display = 'none';
+      musica.play().catch(() => {
+        alert("Toque na tela para permitir o som 🎶");
+      });
     });
-
-    musicBtn.addEventListener("click", () => {
-      document.getElementById("player").style.display = "block";
-      musicBtn.textContent = "🎵 Música tocando...";
-      musicBtn.disabled = true;
-      musicBtn.style.background = "#c4475e";
-    });
-
-    function createHeart() {
-      const heart = document.createElement("div");
-      heart.classList.add("heart-float");
-      heart.textContent = "💖";
-      heart.style.left = Math.random() * 100 + "vw";
-      heart.style.animationDuration = Math.random() * 3 + 3 + "s";
-      document.body.appendChild(heart);
-      setTimeout(() => heart.remove(), 6000);
-    }
-
-    setInterval(createHeart, 600);
   </script>
 </body>
 </html>
