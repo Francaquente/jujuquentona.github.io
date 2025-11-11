@@ -21,34 +21,23 @@
     h1 {
       color: #d63384;
       text-align: center;
-      margin: 30px 10px;
+      margin: 25px 10px;
       font-size: 2em;
     }
     .envelope {
-      width: 160px;
-      height: 110px;
+      width: 200px;
+      height: 140px;
       background-color: #ff6699;
       position: relative;
       border-radius: 10px;
-      margin-top: 20px;
+      margin-top: 10px;
       box-shadow: 0 0 30px rgba(255, 51, 119, 0.3);
       transition: transform 0.6s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 60px;
     }
-    .envelope::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 0;
-      height: 0;
-      border-left: 80px solid transparent;
-      border-right: 80px solid transparent;
-      border-bottom: 55px solid #ff3366;
-      border-radius: 6px;
-      transform-origin: bottom;
-      transition: transform 0.6s ease;
-    }
-    .envelope.open::before { transform: rotateX(180deg); }
     .buttons {
       display: flex;
       flex-wrap: wrap;
@@ -68,6 +57,7 @@
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     }
     button:hover { transform: scale(1.05); background-color: #ff5fa3; }
+
     .mensagem {
       display: none;
       max-width: 90%;
@@ -85,26 +75,27 @@
       max-height: 70vh;
     }
     .mensagem p { margin-bottom: 15px; }
-    audio { display: none; }
 
-    /* corações flutuando */
+    /* corações flutuantes */
     .heart {
       position: fixed;
-      font-size: 20px;
+      font-size: 22px;
       color: #ff5fa3;
-      animation: float 4s ease-in-out infinite;
+      animation: float 5s ease-in-out infinite;
       pointer-events: none;
+      opacity: 0.8;
+      z-index: 1000;
     }
     @keyframes float {
       0% { transform: translateY(0) scale(1); opacity: 1; }
-      100% { transform: translateY(-100vh) scale(1.5); opacity: 0; }
+      100% { transform: translateY(-100vh) scale(1.6); opacity: 0; }
     }
   </style>
 </head>
 <body>
   <h1>💌 Para Juliana 💌</h1>
 
-  <div class="envelope" id="envelope"></div>
+  <div class="envelope" id="envelope">💌</div>
 
   <div class="buttons">
     <button id="abrir">💖 Abrir mensagem</button>
@@ -133,14 +124,13 @@
     const botaoMusica = document.getElementById('musica');
     const musica = document.getElementById('audio');
     let musicaTocando = false;
+    let coracoesAtivos = false;
 
     botaoMensagem.addEventListener('click', () => {
-      envelope.classList.add('open');
-      setTimeout(() => {
-        envelope.style.display = 'none';
-        mensagem.style.display = 'block';
-        window.scrollTo({ top: mensagem.offsetTop, behavior: 'smooth' });
-      }, 600);
+      envelope.style.display = 'none';
+      mensagem.style.display = 'block';
+      window.scrollTo({ top: mensagem.offsetTop, behavior: 'smooth' });
+      gerarCoracoes();
     });
 
     botaoMusica.addEventListener('click', () => {
@@ -148,7 +138,6 @@
         musica.play().then(() => {
           musicaTocando = true;
           botaoMusica.textContent = "🎶 Música tocando...";
-          gerarCoracoes();
         }).catch(() => alert('Toque na tela para permitir o áudio 🎵'));
       } else {
         musica.pause();
@@ -159,17 +148,17 @@
     });
 
     function gerarCoracoes() {
+      if (coracoesAtivos) return;
+      coracoesAtivos = true;
       setInterval(() => {
-        if (musicaTocando) {
-          const heart = document.createElement('div');
-          heart.classList.add('heart');
-          heart.textContent = '💖';
-          heart.style.left = Math.random() * 100 + 'vw';
-          heart.style.animationDuration = (3 + Math.random() * 2) + 's';
-          document.body.appendChild(heart);
-          setTimeout(() => heart.remove(), 4000);
-        }
-      }, 500);
+        const heart = document.createElement('div');
+        heart.classList.add('heart');
+        heart.textContent = '💖';
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.animationDuration = (3 + Math.random() * 3) + 's';
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 6000);
+      }, 400);
     }
   </script>
 </body>
