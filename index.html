@@ -12,14 +12,14 @@
 
         body {
             font-family: "Poppins", sans-serif;
-            background: linear-gradient(135deg, #ffd6e8, #ffb6c1);
+            background: linear-gradient(180deg, #fef6f6, #fde9e9);
             text-align: center;
             padding: 40px 20px;
             overflow-x: hidden;
         }
 
         h1 {
-            color: #d63384;
+            color: #b67a83;
             font-size: 2rem;
             margin-bottom: 20px;
         }
@@ -27,28 +27,56 @@
         .envelope {
             width: 200px;
             height: 130px;
-            background: white;
+            background: #fff;
+            border: 2px solid #e0d8d6;
             margin: 0 auto 30px;
             border-radius: 10px;
             position: relative;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
+        
+        .heart-shape {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    width: 80px;
+    height: 80px;
+    background: #f2b6bd;
 
-        .envelope::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 0;
-            height: 0;
-            border-left: 100px solid transparent;
-            border-right: 100px solid transparent;
-            border-bottom: 70px solid #ff69b4;
-            border-radius: 5px 5px 0 0;
-        }
+    transform: translate(-50%, -50%) rotate(-45deg);
+
+    border-radius: 20px 20px 0 0;
+}
+
+
+.heart-shape::before {
+    content: '';
+    position: absolute;
+    width: 78px;
+    height: 80px;
+    background: #f2b6bd;
+    top: -40px;
+    left: 0;
+    border-radius: 50%;
+}
+
+
+.heart-shape::after {
+    content: '';
+    position: absolute;
+    width: 78px;
+    height: 80px;
+    background: #f2b6bd;
+    top: 0;
+    left: 40px;
+    border-radius: 50%;
+}
+
+
+
 
         button {
-            background: #ff4f84;
+            background: #f28c97;
             color: white;
             border: none;
             padding: 14px 25px;
@@ -56,35 +84,32 @@
             font-size: 1.1rem;
             cursor: pointer;
             margin: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
         }
 
         button:hover {
-            background: #ff2975;
+            background: #e47b87;
             transform: scale(1.05);
+            cursor: pointer;
         }
 
         .mensagem {
             display: none;
             background: white;
-            color: #333;
+            color: #5a4b4b;
             margin: 40px auto;
             padding: 20px;
             border-radius: 20px;
             width: 90%;
             max-width: 600px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             line-height: 1.7;
             position: relative;
         }
 
-        .heart {
-            position: absolute;
-            font-size: 20px;
-            color: #ff4f84;
-            animation: float 4s infinite ease-in-out;
-        }
+
+
 
         @keyframes float {
             0% {
@@ -108,7 +133,10 @@
 <body>
     <h1>💌 Para Juliana 💌</h1>
 
-    <div class="envelope"></div>
+    <div class="envelope">
+        <div class="heart-shape"></div>
+    </div>
+    
 
     <button id="abrir">💖 Abrir mensagem</button>
     <button id="tocar">🎵 Tocar música</button>
@@ -171,7 +199,7 @@
 const botao = document.getElementById("tocar");
 
 
-const startTime = 165; 
+const startTime = 162; 
 const endTime = 230;  
 
 botao.addEventListener("click", () => {
