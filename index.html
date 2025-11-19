@@ -1,118 +1,192 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>💌 Para Juliana 💌</title>
-  <style>
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: "Poppins", sans-serif;
-      background: linear-gradient(135deg, #ffd6e8, #ffb6c1);
-      text-align: center;
-      padding: 40px 20px;
-      overflow-x: hidden;
-    }
-    h1 { color: #d63384; font-size: 2rem; margin-bottom: 20px; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💌 Para Juliana 💌</title>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
 
-    .envelope {
-      width: 200px; height: 130px;
-      background: white; margin: 0 auto 30px;
-      border-radius: 10px; position: relative;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    }
-    .envelope::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0;
-      width: 0; height: 0;
-      border-left: 100px solid transparent;
-      border-right: 100px solid transparent;
-      border-bottom: 70px solid #ff69b4;
-      border-radius: 5px 5px 0 0;
-    }
+        body {
+            font-family: "Poppins", sans-serif;
+            background: linear-gradient(135deg, #ffd6e8, #ffb6c1);
+            text-align: center;
+            padding: 40px 20px;
+            overflow-x: hidden;
+        }
 
-    button {
-      background: #ff4f84; color: white;
-      border: none; padding: 14px 25px;
-      border-radius: 40px; font-size: 1.1rem;
-      cursor: pointer; margin: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-      transition: all 0.3s ease;
-    }
-    button:hover { background: #ff2975; transform: scale(1.05); }
+        h1 {
+            color: #d63384;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
 
-    .mensagem {
-      display: none; background: white; color: #333;
-      margin: 40px auto; padding: 20px;
-      border-radius: 20px; width: 90%; max-width: 600px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-      line-height: 1.7; position: relative;
-    }
+        .envelope {
+            width: 200px;
+            height: 130px;
+            background: white;
+            margin: 0 auto 30px;
+            border-radius: 10px;
+            position: relative;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
 
-    .heart {
-      position: absolute; font-size: 20px;
-      color: #ff4f84; animation: float 4s infinite ease-in-out;
-    }
-    @keyframes float {
-      0% { transform: translateY(0) scale(1); opacity: 1; }
-      50% { transform: translateY(-60px) scale(1.3); opacity: 0.8; }
-      100% { transform: translateY(-120px) scale(0.8); opacity: 0; }
-    }
-  </style>
+        .envelope::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 0;
+            border-left: 100px solid transparent;
+            border-right: 100px solid transparent;
+            border-bottom: 70px solid #ff69b4;
+            border-radius: 5px 5px 0 0;
+        }
+
+        button {
+            background: #ff4f84;
+            color: white;
+            border: none;
+            padding: 14px 25px;
+            border-radius: 40px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            margin: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background: #ff2975;
+            transform: scale(1.05);
+        }
+
+        .mensagem {
+            display: none;
+            background: white;
+            color: #333;
+            margin: 40px auto;
+            padding: 20px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 600px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            line-height: 1.7;
+            position: relative;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            color: #ff4f84;
+            animation: float 4s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+
+            50% {
+                transform: translateY(-60px) scale(1.3);
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: translateY(-120px) scale(0.8);
+                opacity: 0;
+            }
+        }
+    </style>
 </head>
+
 <body>
-  <h1>💌 Para Juliana 💌</h1>
+    <h1>💌 Para Juliana 💌</h1>
 
-  <div class="envelope"></div>
+    <div class="envelope"></div>
 
-  <button id="abrir">💖 Abrir mensagem</button>
-  <button id="tocar">🎵 Tocar música</button>
+    <button id="abrir">💖 Abrir mensagem</button>
+    <button id="tocar">🎵 Tocar música</button>
 
-  <div class="mensagem" id="mensagem">
-    <p>Oi meu amor! 💖</p>
-    <p>Passando pra te desejar um feliz aniversário, tudo de bom em sua vida, muita paz, prosperidade, saúde e muitos caminhos abertos.</p>
-    <p>Acima de tudo continue sendo essa mulher guerreira, especial e maravilhosa com princípios cujo só você tem. Cujo eu conheci a mulher mais incrível que já passou em toda minha vida.</p>
-    <p>Lamento por tudo o que houve conosco, por todas as vezes que brigamos, e todas as vezes que te decepcionei, com minhas palavras e atitudes. Você é incrível, e merece o mundo, onde eu tento e peço todos os dias a melhora para que eu consiga.</p>
-    <p>Obrigado por sempre me ajudar, por sempre me apoiar, aconselhar, ser minha segunda mãe KKKKk. Obrigado por estar comigo nos meus melhores e piores momentos, nossa dívida será eterna, te agradeço muito pela mulher que você é para mim.</p>
-    <p>Você sempre será a minha dona encrenca, sempre terá um lugar no meu coração onde ninguém nunca vai ocupar, a não ser você! Espero conquistar tudo novamente com você, onde possamos olhar pra trás e dar risada juntos.</p>
-    <p>Que essa sua fase seja abençoada, uma nova fase de responsabilidade e direitos, que você seja MUITO abençoada. Estarei sempre com você, aqui, além daqui e pra sempre.</p>
-    <p>❤️ Amo você, Juliana França Lima! ❤️</p>
-  </div>
+    <div class="mensagem" id="mensagem">
+        <p>Oi meu amor! 💖</p>
+        <p>Passando pra te desejar um feliz aniversário, tudo de bom em sua vida, muita paz, prosperidade, saúde e
+            muitos caminhos abertos.</p>
+        <p>Acima de tudo continue sendo essa mulher guerreira, especial e maravilhosa com princípios cujo só você tem.
+            Cujo eu conheci a mulher mais incrível que já passou em toda minha vida.</p>
+        <p>Lamento por tudo o que houve conosco, por todas as vezes que brigamos, e todas as vezes que te decepcionei,
+            com minhas palavras e atitudes. Você é incrível, e merece o mundo, onde eu tento e peço todos os dias a
+            melhora para que eu consiga.</p>
+        <p>Obrigado por sempre me ajudar, por sempre me apoiar, aconselhar, ser minha segunda mãe KKKKk. Obrigado por
+            estar comigo nos meus melhores e piores momentos, nossa dívida será eterna, te agradeço muito pela mulher
+            que você é para mim.</p>
+        <p>Você sempre será a minha dona encrenca, sempre terá um lugar no meu coração onde ninguém nunca vai ocupar, a
+            não ser você! Espero conquistar tudo novamente com você, onde possamos olhar pra trás e dar risada juntos.
+        </p>
+        <p>Que essa sua fase seja abençoada, uma nova fase de responsabilidade e direitos, que você seja MUITO
+            abençoada. Estarei sempre com você, aqui, além daqui e pra sempre.</p>
+        <p>❤️ Amo você, Juliana França Lima! ❤️</p>
+    </div>
 
-  <<audio id="music" autoplay loop>
-  <source src="assets/audio/musica.mp3" type="audio/mpeg">
-</audio>
-  <script>
-    const botaoMensagem = document.getElementById("abrir");
-    const botaoTocar = document.getElementById("tocar");
-    const mensagem = document.getElementById("mensagem");
-    const audio = document.getElementById("audio");
+    <audio id="music" autoplay loop>
+        <source src="Miguel - All I Want Is You feat. J. Cole - GreatestHipHopRnB (youtube).mp3" type="audio/mpeg">
+        </audio>
+        
+        <script>
+            const botaoMensagem = document.getElementById("abrir");
+            const botaoTocar = document.getElementById("tocar");
+            const mensagem = document.getElementById("mensagem");
+            const audio = document.getElementById("music");
 
-    botaoMensagem.addEventListener("click", () => {
-      mensagem.style.display = "block";
-      window.scrollTo({ top: mensagem.offsetTop, behavior: "smooth" });
+            botaoMensagem.addEventListener("click", () => {
+                mensagem.style.display = "block";
+                window.scrollTo({ top: mensagem.offsetTop, behavior: "smooth" });
 
-      for (let i = 0; i < 15; i++) {
-        const heart = document.createElement("div");
-        heart.className = "heart";
-        heart.innerHTML = "💖";
-        heart.style.left = Math.random() * 100 + "vw";
-        heart.style.top = "80%";
-        heart.style.animationDuration = 2 + Math.random() * 3 + "s";
-        document.body.appendChild(heart);
-        setTimeout(() => heart.remove(), 5000);
-      }
-    });
+                for (let i = 0; i < 15; i++) {
+                    const heart = document.createElement("div");
+                    heart.className = "heart";
+                    heart.innerHTML = "💖";
+                    heart.style.left = Math.random() * 100 + "vw";
+                    heart.style.top = "80%";
+                    heart.style.animationDuration = 2 + Math.random() * 3 + "s";
+                    document.body.appendChild(heart);
+                    setTimeout(() => heart.remove(), 5000);
+                }
+            });
 
-    botaoTocar.addEventListener("click", () => {
-      audio.play().then(() => {
-        botaoTocar.textContent = "🎶 Música tocando...";
-        botaoTocar.disabled = true;
-      }).catch(() => {
-        alert("Toque na tela para permitir o áudio 🎵");
-      });
-    });
-  </script>
+            botaoTocar.addEventListener("click", () => {
+                audio.play().then(() => {
+                    botaoTocar.textContent = "🎶 Música tocando...";
+                    botaoTocar.disabled = true;
+                }).catch(() => {
+                    alert("Toque na tela para permitir o áudio 🎵");
+                });
+            });
+
+const botao = document.getElementById("tocar");
+
+
+const startTime = 165; 
+const endTime = 230;  
+
+botao.addEventListener("click", () => {
+    audio.currentTime = startTime;
+    audio.play();
+
+
+    const interval = setInterval(() => {
+        if (audio.currentTime >= endTime) {
+            audio.pause();
+            clearInterval(interval);
+        }
+    }, 200);
+});
+        </script>
 </body>
+
 </html>
